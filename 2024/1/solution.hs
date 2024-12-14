@@ -20,7 +20,7 @@ sortLists :: ([Int], [Int]) -> ([Int], [Int])
 sortLists (list1, list2) = (sort list1, sort list2)
 
 getDifferences :: ([Int], [Int]) -> Int
-getDifferences input = sum [abs (x - y) | (x, y) <- uncurry zip input]
+getDifferences = sum . map abs . uncurry (zipWith (-))
 
 getSimilarityScore :: ([Int], [Int]) -> Int
 getSimilarityScore input = sum [x * findOccurrences x (snd input) | x <- fst input]
